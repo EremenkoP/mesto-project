@@ -1,0 +1,15 @@
+.card__button{
+  width: 22px;
+  height: 19px;
+  align-self: center;
+  border: none;
+  background-color: #fff;
+  background-image: url("../../../image/button/Union.svg");
+  background-size: cover;
+}
+
+.card__button:hover{
+  opacity: 50%;
+  transition: 0.4s;
+}
+

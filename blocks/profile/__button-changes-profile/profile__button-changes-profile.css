@@ -1,0 +1,25 @@
+.profile__button-changes-profile{
+  grid-area: button;
+  width: 24px;
+  height: 24px;
+  align-self: flex-end;
+  background-color:  #000;
+  background-image: url("../../../image/button/pen.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #fff;
+  margin-bottom: 8px;
+}
+
+.profile__button-changes-profile:hover {
+  opacity: 60%;
+  transition: 0.4s;
+}
+
+@media screen and (max-width:550px) {
+  .profile__button-changes-profile{
+    width: 18px;
+    height: 18px;
+    margin-bottom: 8px;
+  }
+}

@@ -1,0 +1,17 @@
+.profile__info{
+  grid-area: info;
+  display: grid;
+  grid-template-areas: "name button"
+  "profession profession";
+  gap: 8px 18px;
+  grid-template-rows: min-content;
+  grid-template-columns: max-content;
+  }
+
+@media screen and (max-width: 550px) {
+  .profile__info {
+    gap: 5px 10px;
+    grid-template-columns: minmax(235px, max-content) 37px;
+    margin: 0 auto;
+  }
+}

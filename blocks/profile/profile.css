@@ -1,0 +1,26 @@
+.profile{
+margin-top: 40px;
+display: grid;
+grid-template-columns: 120px 1fr 150px;
+column-gap: 30px;
+grid-template-areas: "image info button";
+}
+
+@media screen and (max-width: 767px) {
+  .profile{
+    margin-top: 20px;
+    grid-template-columns: 120px 1fr 100px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile{
+    margin: 42px auto 0;
+    min-width: 282px;
+    width: 88.125%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 120px 1fr 78px;
+    row-gap: 6px;
+    grid-template-areas: "image" "info" "button";
+  }
+}
