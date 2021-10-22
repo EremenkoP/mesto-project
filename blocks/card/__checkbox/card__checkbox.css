@@ -1,0 +1,11 @@
+.card__checkbox{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.card__checkbox:checked + .card__button {
+  background-image: url("../../../image/button/Union-active.svg");
+}
