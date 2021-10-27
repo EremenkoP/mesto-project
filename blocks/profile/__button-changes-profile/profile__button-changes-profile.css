@@ -9,6 +9,7 @@
   background-position: center;
   border: 1px solid #fff;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .profile__button-changes-profile:hover {

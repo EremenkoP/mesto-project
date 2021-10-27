@@ -12,79 +12,75 @@
     <header class="header">
       <div class="header__logo"></div>
     </header>
-    <div class="main">
+    <main class="main">
       <section class="profile">
         <img src="./image/profile-image.jpg" alt="Фотография пользователя" class="profile__image">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__button-changes-profile"></button>
+          <button type="button" class="profile__button-changes-profile"></button>
           <p class="profile__profession">Исследователь океана</p>
         </div>
-        <button class="profile__button-add"></button>
+        <button type="button" class="profile__button-add"></button>
       </section>
       <section class="cards">
           <article class="card">
-            <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="" class="card__image">
+            <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Горный монастырь. Фотография" class="card__image">
             <div class="card__caption">
               <h2 class="card__title">Карачаевск</h2>
-                <button class="card__button"></button>
+                <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="" class="card__image">
+            <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус издалека. Фотография" class="card__image">
             <div class="card__caption">
               <h2 class="card__title">Гора Эльбрус</h2>
-              <button class="card__button"></button>
+              <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="" class="card__image">
+            <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Склоны домбая. Фотография" class="card__image">
             <div class="card__caption">
               <h2 class="card__title">Домбай</h2>
-              <button class="card__button"></button>
+              <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="" class="card__image">
+            <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус издалека. Фотография" class="card__image">
             <div class="card__caption">
               <h2 class="card__title">Гора Эльбрус</h2>
-              <button class="card__button"></button>
+              <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="" class="card__image">
+            <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Склоны домбая. Фотография" class="card__image">
             <div class="card__caption">
               <h2 class="card__title">Домбай</h2>
-              <button class="card__button"></button>
+              <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="" class="card__image">
+            <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Горный монастырь. Фотография" class="card__image">
             <div class="card__caption">
               <h2 class="card__title">Карачаево-Черкессия</h2>
-              <button class="card__button"></button>
+              <button type="button" class="card__button"></button>
             </div>
           </article>
       </section>
-    </div>
+    </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
   </div>
   <div class="popup">
-    <fieldset class="popup__container">
+    <div class="popup__container">
       <button class="popup__button-close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form action="save" method="get" class="popup__form">
-        <label>
-          <input type="text" name="name" id="name" value="Жак-Ив Кусто" class="popup__name">
-        </label>
-        <label>
-          <input type="text" name="proffesion" id="proffesion" value="Исследователь океана" class="popup__proffesion">
-        </label>
-        <input type="submit" value="Сохранить" class="popup__button">
+      <form action="save" method="get" name="profile-changes" class="popup__form">
+          <input type="text" name="name" id="name" value="Жак-Ив Кусто" class="popup__text-input popup__name">
+          <input type="text" name="proffesion" id="proffesion" value="Исследователь океана" class="popup__text-input popup__proffesion">
+          <input type="submit" value="Сохранить" class="popup__button">
       </form>
-  </fieldset>
+  </div>
   </div>
 </body>
 </html>

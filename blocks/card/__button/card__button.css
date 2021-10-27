@@ -6,6 +6,7 @@
   background-color: #fff;
   background-image: url("../../../image/button/Union.svg");
   background-size: cover;
+  cursor: pointer;
 }
 
 .card__button:hover{
