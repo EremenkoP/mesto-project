@@ -6,4 +6,15 @@
   font-size: 0.875rem;
   line-height: 1.21;
   padding-bottom: 13px;
+  margin: 28px auto 0;
+}
+
+.popup__text-input:first-child{
+  margin: 48px auto 0;
+}
+
+@media screen and (max-width:550px) {
+  .popup__text-input:first-child{
+    margin-top: 75px;
+  }
 }
