@@ -1,5 +1,5 @@
 .card__image{
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px 10px 0 0;
 }

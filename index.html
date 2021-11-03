@@ -24,42 +24,60 @@
       </section>
       <section class="cards">
           <article class="card">
-            <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Горный монастырь. Фотография" class="card__image">
+            <button type="button" class="card__button-image">
+             <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Горный монастырь. Фотография" class="card__image">
+            </button>
+            <button type="button" class="card__button-trash"></button>
             <div class="card__caption">
               <h2 class="card__title">Карачаевск</h2>
                 <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус издалека. Фотография" class="card__image">
+            <button type="button" class="card__button-image">
+              <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус издалека. Фотография" class="card__image">
+            </button>
+            <button type="button" class="card__button-trash"></button>
             <div class="card__caption">
               <h2 class="card__title">Гора Эльбрус</h2>
               <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Склоны домбая. Фотография" class="card__image">
+            <button type="button" class="card__button-image">
+              <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Склоны домбая. Фотография" class="card__image">
+            </button>
+            <button type="button" class="card__button-trash"></button>
             <div class="card__caption">
               <h2 class="card__title">Домбай</h2>
               <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус издалека. Фотография" class="card__image">
+            <button type="button" class="card__button-image">
+              <img src="./image/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус издалека. Фотография" class="card__image">
+            </button>
+            <button type="button" class="card__button-trash"></button>
             <div class="card__caption">
               <h2 class="card__title">Гора Эльбрус</h2>
               <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Склоны домбая. Фотография" class="card__image">
+            <button type="button" class="card__button-image">
+             <img src="./image/kirill-pershin-1556355-unsplash.jpg" alt="Склоны домбая. Фотография" class="card__image">
+            </button>
+            <button type="button" class="card__button-trash"></button>
             <div class="card__caption">
               <h2 class="card__title">Домбай</h2>
               <button type="button" class="card__button"></button>
             </div>
           </article>
           <article class="card">
-            <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Горный монастырь. Фотография" class="card__image">
+            <button type="button" class="card__button-image">
+              <img src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Горный монастырь. Фотография" class="card__image">
+            </button>
+            <button type="button" class="card__button-trash"></button>
             <div class="card__caption">
               <h2 class="card__title">Карачаево-Черкессия</h2>
               <button type="button" class="card__button"></button>
@@ -73,14 +91,32 @@
   </div>
   <div class="popup">
     <div class="popup__container">
-      <button class="popup__button-close"></button>
+      <button type="button" class="popup__button-close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form action="save" method="get" name="profile-changes" class="popup__form">
           <input type="text" name="name" id="name" value="Жак-Ив Кусто" class="popup__text-input">
           <input type="text" name="proffesion" id="proffesion" value="Исследователь океана" class="popup__text-input">
           <input type="submit" value="Сохранить" class="popup__button">
       </form>
+    </div>
   </div>
+  <div class="popup">
+    <div class="popup__container">
+      <button type="button" class="popup__button-close"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form action="save" method="get" name="new-card" class="popup__form">
+          <input type="text" name="name-card" id="name-card" placeholder="Название" class="popup__text-input">
+          <input type="url" name="image-url" id="image-url" placeholder="Ссылка на картинку" class="popup__text-input">
+          <input type="submit" value="Создать" class="popup__button">
+      </form>
+    </div>
+  </div>
+  <div class="popup">
+    <div class="popup__image-container">
+      <button class="popup__button-close"></button>
+      <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз" class="popup__image">
+      <p class="popup__label">Архыз</p>
+    </div>
   </div>
 </body>
 </html>
