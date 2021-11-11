@@ -15,7 +15,8 @@ const popupImgClose = popupClose[2];
 const formElement = document.querySelectorAll('.popup__form');
 const formProfile = formElement[0];
 const formCard = formElement[1];
-// стандартный набор карточек
+// базовый набор карточек и элементов
+const cardTemp = document.querySelector("#card__temp").content;
 const initialCards = [
   {
     name: 'Архыз',
@@ -44,9 +45,12 @@ const initialCards = [
   ];
 
 // **работа непосредственно со страницей и попапами
+// * функция открытие модалки с картинкой.
+function popupImgFunction(){
+  popupImg.classList.toggle('popup_opened');
+}
+popupImgClose.addEventListener('click', popupImgFunction);
 // *загрузка начальных картинок
-const cardTemp = document.querySelector("#card__temp").content;
-
 initialCards.forEach(function(item){
   let card = cardTemp.querySelector('.card').cloneNode(true);
   card.querySelector('.card__title').textContent = item.name;
@@ -57,6 +61,12 @@ initialCards.forEach(function(item){
   });
   card.querySelector('.card__button-trash').addEventListener('click', function (){
     card.remove();
+  });
+  card.querySelector('.card__image').addEventListener('click', function(){
+    popupImg.querySelector('.popup__image').setAttribute('src', item.link);
+    popupImg.querySelector('.popup__image').setAttribute('alt', item.name);
+    popupImg.querySelector('.popup__label').textContent = item.name;
+    popupImgFunction();
   });
   document.querySelector('.cards').prepend(card);
 });
@@ -107,11 +117,14 @@ function formAddCard (evt) {
   card.querySelector('.card__button-trash').addEventListener('click', function (){
     card.remove();
   });
+  card.querySelector('.card__image').addEventListener('click', function(){
+    popupImg.querySelector('.popup__image').setAttribute('src', cardImg.value);
+    popupImg.querySelector('.popup__image').setAttribute('alt', cardName.value);
+    popupImg.querySelector('.popup__label').textContent = cardName.value;
+    popupImgFunction();
+  });
   document.querySelector('.cards').prepend(card);
   popupAddFunction();
 }
 let popupLetCard = popupAdd.querySelector('.popup__button')
 formCard.addEventListener('submit', formAddCard);
-
-//*Попап с картинкой
-// открытие и закрытие попапа
