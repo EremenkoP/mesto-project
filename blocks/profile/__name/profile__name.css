@@ -4,17 +4,29 @@
   font-size: 2.625rem;
   line-height: 3rem;
   font-weight: 500;
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 959px) {
+  .profile__name{
+    max-width: 350px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .profile__name{
   font-size: 1.6875rem;
   line-height: 2.0425rem;
+  max-width: 200px;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .profile__name{
   text-align: end;
+  max-width: 300px;
   }
 }
