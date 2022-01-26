@@ -1,0 +1,8 @@
+.popup__span{
+  opacity: 0;
+  font-size: 0.75rem;
+  line-height: 0.9075;
+  font-weight: 400;
+  color: #FF0000;
+  transition: opacity 0.25s linear;
+}
