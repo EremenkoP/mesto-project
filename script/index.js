@@ -1,6 +1,7 @@
 // импортирую нужные объекты
 import {popupImgClose, popupImg, formProfile, popupProfileClose, changesProfile, popupProfile, profileChanges, popupProfileOpened} from './components/modal.js';
 import {popupClosed} from './components/utils.js';
+import {enableValidation} from './components/validate.js'
 
 // закрытие модалки с картинкой
 popupImgClose.addEventListener('click', function(){
@@ -20,7 +21,7 @@ popupProfileClose.addEventListener('click', function(){
 document.addEventListener('keydown', evt => {
   if (evt.key === 'Escape') {
     const popupOpen = document.querySelector('.popup_opened');
-      if (popupOpen != null ) {
+      if (popupOpen != null) {
         popupClosed(popupOpen);
       }
   }
@@ -29,7 +30,17 @@ document.addEventListener('keydown', evt => {
 //закрытие попапа кликом по оверфлоу
 document.addEventListener('click',  evt => {
   const popupOpen = document.querySelector('.popup_opened');
-  if ((popupOpen != null) && (evt.target.classList.contains('popup')) ) {
+  if (evt.target.classList.contains('popup'))  {
     popupClosed(popupOpen);
   }
 })
+
+// запуск валидации
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text-input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__text-input_error',
+  errorClass: 'popup__span_visible'
+});

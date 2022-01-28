@@ -43,5 +43,6 @@
 @import url("../blocks/popup/__text-input/popup__text-input.css");
 @import url("../blocks/popup/__text-input/_error/popup__text-input_error.css");
 @import url("../blocks/popup/__button/popup__button.css");
+@import url("../blocks/popup/__button/_disabled/popup__button_disabled.css");
 @import url("../blocks/popup/__span/popup__span.css");
-@import url("../blocks/popup/__span/_active/popup__span_active.css");
+@import url("../blocks/popup/__span/_visible/popup__span_visible.css");

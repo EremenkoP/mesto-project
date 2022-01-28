@@ -30,7 +30,6 @@ const popupAdd = document.querySelector('.popup__add');
 const formCard = popupAdd.querySelector('.popup__form');
 const cardAdd = document.querySelector('.profile__button-add');
 const popupAddClose = popupAdd.querySelector('.popup__button-close');
-const popupLetCard = popupAdd.querySelector('.popup__button');
 
 //импорт нужных объектов
 import {popupOpened, popupClosed} from './utils.js';

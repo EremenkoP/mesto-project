@@ -23,11 +23,11 @@ import {popupOpened, popupClosed} from './utils.js';
 // *изменения профиля
 // открытие попапа
 function popupProfileOpened(){
-  popupOpened(popupProfile);
   const formName = formProfile.querySelector('#name');
   formName.setAttribute('value', profileName.textContent);
   const formProfesion = formProfile.querySelector('#proffesion');
   formProfesion.setAttribute('value', profileProfesion.textContent);
+  popupOpened(popupProfile);
 };
 
 // Работа с именем и профессией
