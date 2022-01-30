@@ -1,7 +1,27 @@
+import '../pages/index.css'
+
 // импортирую нужные объекты
 import {popupImgClose, popupImg, formProfile, popupProfileClose, changesProfile, popupProfile, profileChanges, popupProfileOpened} from './components/modal.js';
-import {popupClosed} from './components/utils.js';
+import {popupOpened ,popupClosed} from './components/utils.js';
 import {enableValidation} from './components/validate.js'
+import {initialCards, popupAdd, formCard, cardAdd, popupAddClose, createCard, formAddCard} from './components/cards.js'
+
+// *загрузка начальных картинок
+initialCards.forEach(function(item){
+  const name = item.name;
+  const link = item.link;
+  document.querySelector('.cards').prepend(createCard(name, link));
+});
+
+//*Добавление новой карточки
+formCard.addEventListener('submit', formAddCard);
+// открытие и закрытие попапа
+cardAdd.addEventListener('click', function(){
+  popupOpened(popupAdd);
+});
+popupAddClose.addEventListener('click',  function(){
+  popupClosed(popupAdd);
+});
 
 // закрытие модалки с картинкой
 popupImgClose.addEventListener('click', function(){
