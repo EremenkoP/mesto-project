@@ -12,35 +12,33 @@ const changesProfile = document.querySelector('.profile__button-changes-profile'
 
 // вынимаю значения форм для попапов
 const formProfile = popupProfile.querySelector('.popup__form');
+const formName = formProfile.querySelector('#name');
+const formProfesion = formProfile.querySelector('#proffesion');
 
 // базовый набор карточек и элементов
 const profileName = document.querySelector('.profile__name');
 const profileProfesion  = document.querySelector('.profile__profession');
 
 //импорт нужных объектов
-import {popupOpened, popupClosed} from './utils.js';
+import {openPopup, closePopup} from './utils.js';
 
 // *изменения профиля
 // открытие попапа
-function popupProfileOpened(){
-  const formName = formProfile.querySelector('#name');
+function openProfilePopup(){
   formName.setAttribute('value', profileName.textContent);
-  const formProfesion = formProfile.querySelector('#proffesion');
   formProfesion.setAttribute('value', profileProfesion.textContent);
-  popupOpened(popupProfile);
+  openPopup(popupProfile);
 };
 
 // Работа с именем и профессией
-function profileChanges (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();
-  const formName = formProfile.querySelector('#name');
   profileName.textContent = formName.value;
-  const formProfesion = formProfile.querySelector('#proffesion');
   profileProfesion.textContent = formProfesion.value;
-  popupClosed(popupProfile);
+  closePopup(popupProfile);
 }
 
 
 
 // экспорт объектов
-export {popupImgClose, formProfile, popupProfileClose, changesProfile, popupProfile, popupImg, profileChanges, popupProfileOpened}
+export {popupImgClose, formProfile, popupProfileClose, changesProfile, popupProfile, popupImg, handleProfileFormSubmit, openProfilePopup}

@@ -1,15 +1,22 @@
 // * функции открытия и закрытия модалок.
-function popupOpened(popup){
+function openPopup(popup){
   popup.classList.add('popup_opened');
-  event.stopPropagation()
+  document.addEventListener('keydown', closeByEscape);
 };
 
-function popupClosed(popup){
+function closePopup(popup){
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 };
 
+// функция для закрытия модалки по ESC
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
 
 
 
-
-export {popupOpened, popupClosed};
+export {openPopup, closePopup};

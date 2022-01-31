@@ -1,59 +1,46 @@
 import '../pages/index.css'
 
 // импортирую нужные объекты
-import {popupImgClose, popupImg, formProfile, popupProfileClose, changesProfile, popupProfile, profileChanges, popupProfileOpened} from './components/modal.js';
-import {popupOpened ,popupClosed} from './components/utils.js';
+import {popupImgClose, popupImg, formProfile, popupProfileClose, changesProfile, popupProfile, handleProfileFormSubmit, openProfilePopup} from './components/modal.js';
+import {openPopup ,closePopup} from './components/utils.js';
 import {enableValidation} from './components/validate.js'
-import {initialCards, popupAdd, formCard, cardAdd, popupAddClose, createCard, formAddCard} from './components/cards.js'
+import {initialCards, popupAdd, formCard, cardAdd, popupAddClose, createCard, handelFormAddCard, cards} from './components/cards.js'
+
+// объявим необходимые константы
+const popups = document.querySelectorAll(".popup");
+
+//закрытие сразу всех попапов
+popups.forEach(popup => {
+  popup.addEventListener('mousedown', evt => {
+    if (evt.target.classList.contains('popup_opened')){
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__button-close')) {
+      closePopup(popup);
+    }
+  })
+})
 
 // *загрузка начальных картинок
 initialCards.forEach(function(item){
   const name = item.name;
   const link = item.link;
-  document.querySelector('.cards').prepend(createCard(name, link));
+  cards.prepend(createCard(name, link));
 });
 
 //*Добавление новой карточки
-formCard.addEventListener('submit', formAddCard);
+formCard.addEventListener('submit', handelFormAddCard);
 // открытие и закрытие попапа
 cardAdd.addEventListener('click', function(){
-  popupOpened(popupAdd);
-});
-popupAddClose.addEventListener('click',  function(){
-  popupClosed(popupAdd);
+  openPopup(popupAdd);
 });
 
-// закрытие модалки с картинкой
-popupImgClose.addEventListener('click', function(){
-  popupClosed(popupImg);
-});
 
 // закрытие модалки c изменениями данных пользователя
-formProfile.addEventListener('submit', profileChanges);
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 // открытие и закрытие модалки с данными пользователя
-changesProfile.addEventListener('click', popupProfileOpened);
-popupProfileClose.addEventListener('click', function(){
-   popupClosed(popupProfile);
-});
-
-//закрытие модалки по ESC
-document.addEventListener('keydown', evt => {
-  if (evt.key === 'Escape') {
-    const popupOpen = document.querySelector('.popup_opened');
-      if (popupOpen != null) {
-        popupClosed(popupOpen);
-      }
-  }
-});
-
-//закрытие попапа кликом по оверфлоу
-document.addEventListener('click',  evt => {
-  const popupOpen = document.querySelector('.popup_opened');
-  if (evt.target.classList.contains('popup'))  {
-    popupClosed(popupOpen);
-  }
-})
+changesProfile.addEventListener('click', openProfilePopup);
 
 // запуск валидации
 enableValidation({
