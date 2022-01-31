@@ -31,6 +31,8 @@ const formCard = popupAdd.querySelector('.popup__form');
 const cardAdd = document.querySelector('.profile__button-add');
 const popupAddClose = popupAdd.querySelector('.popup__button-close');
 const cards = document.querySelector('.cards');
+const nameInput = popupAdd.querySelector('#name-card');
+const imageInput =popupAdd.querySelector('#image-url');
 
 //импорт нужных объектов
 import {openPopup, closePopup} from './utils.js';
@@ -65,12 +67,12 @@ function createCard(name, link) {
 // Добавление новой карточки
 function handelFormAddCard (evt) {
   evt.preventDefault();
-  const name = popupAdd.querySelector('#name-card').value;
-  const link = popupAdd.querySelector('#image-url').value;
+  const name = nameInput.value;
+  const link = imageInput.value;
   cards.prepend(createCard(name, link));
   closePopup(popupAdd);
   formCard.reset();
-  const button = popupAdd.querySelector('.popup__button');
+  const button = evt.submitter;
   button.setAttribute('disabled', '');
   button.classList.add('popup__button_disabled')
 }
