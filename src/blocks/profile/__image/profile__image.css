@@ -1,8 +1,9 @@
 .profile__image{
-  grid-area: image;
   object-fit: cover;
   width: 100%;
   border-radius: 50%;
+  grid-area: image;
+  aspect-ratio: 1/1;
 }
 
 @media screen and (max-width: 550px) {

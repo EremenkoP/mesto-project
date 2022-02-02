@@ -1,5 +1,4 @@
 // вынимаю попапы
-
 const popupProfile = document.querySelector('.popup__profile');
 const popupImg = document.querySelector('.popup__view-image');
 
@@ -18,9 +17,12 @@ const formProfesion = formProfile.querySelector('#proffesion');
 // базовый набор карточек и элементов
 const profileName = document.querySelector('.profile__name');
 const profileProfesion  = document.querySelector('.profile__profession');
+const profileImage = document.querySelector('.profile__image');
+
 
 //импорт нужных объектов
 import {openPopup, closePopup} from './utils.js';
+import { changesDataProfile } from './api.js';
 
 // *изменения профиля
 // открытие попапа
@@ -30,15 +32,27 @@ function openProfilePopup(){
   openPopup(popupProfile);
 };
 
-// Работа с именем и профессией
+// Работа с именем и профессией через модалку
 function handleProfileFormSubmit (evt) {
   evt.preventDefault();
-  profileName.textContent = formName.value;
-  profileProfesion.textContent = formProfesion.value;
-  closePopup(popupProfile);
+  changesDataProfile (formName, formProfesion)
+    .then ((res) => {
+      if (res.ok) {
+        profileName.textContent = formName.value;
+        profileProfesion.textContent = formProfesion.value;
+        closePopup(popupProfile);
+      } else {
+        return console.log(res.status);
+      }
+    })
 }
 
-
+// функция для загрузки первичных данных пользователя
+const getUserData = (user) => {
+  profileName.textContent = user.name;
+  profileProfesion.textContent = user.about;
+  profileImage.src = user.avatar;
+}
 
 // экспорт объектов
-export {popupImgClose, formProfile, popupProfileClose, changesProfile, popupProfile, popupImg, handleProfileFormSubmit, openProfilePopup}
+export {popupImgClose, formProfile, popupProfileClose, changesProfile, popupProfile, popupImg, handleProfileFormSubmit, openProfilePopup, getUserData}

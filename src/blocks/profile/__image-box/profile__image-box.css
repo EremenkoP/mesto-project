@@ -1,0 +1,15 @@
+.profile__image-box{
+  grid-area: image;
+  border-radius: 50%;
+  position: relative;
+  z-index: 3;
+  transition: background-color 0.25s ease-in-out;
+}
+
+
+.profile__image-box:hover {
+  background-image: url("../../../image/pencel.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.8);
+}

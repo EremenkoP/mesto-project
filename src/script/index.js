@@ -1,10 +1,11 @@
 import '../pages/index.css'
 
 // импортирую нужные объекты
-import {popupImgClose, popupImg, formProfile, popupProfileClose, changesProfile, popupProfile, handleProfileFormSubmit, openProfilePopup} from './components/modal.js';
+import {formProfile, changesProfile, handleProfileFormSubmit, openProfilePopup, getUserData} from './components/modal.js';
 import {openPopup ,closePopup} from './components/utils.js';
 import {enableValidation} from './components/validate.js'
-import {initialCards, popupAdd, formCard, cardAdd, popupAddClose, createCard, handelFormAddCard, cards} from './components/cards.js'
+import {popupAdd, formCard, cardAdd, handelFormAddCard, createCard, cardsArea} from './components/cards.js'
+import {getAppInfo } from './components/api.js';
 
 // объявим необходимые константы
 const popups = document.querySelectorAll(".popup");
@@ -21,12 +22,15 @@ popups.forEach(popup => {
   })
 })
 
-// *загрузка начальных картинок
-initialCards.forEach(function(item){
-  const name = item.name;
-  const link = item.link;
-  cards.prepend(createCard(name, link));
-});
+// выполнение функции для отображения первичной информации от сервера
+getAppInfo()
+  .then(([user, cards]) => {
+    getUserData(user);
+    cards.forEach(card => {
+      cardsArea.prepend(createCard(card.name, card.link, card.likes, user._id, card.owner._id));
+    });
+  })
+  .catch(err => console.log(err));
 
 //*Добавление новой карточки
 formCard.addEventListener('submit', handelFormAddCard);
