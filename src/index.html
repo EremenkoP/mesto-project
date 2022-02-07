@@ -55,11 +55,31 @@
       </form>
     </div>
   </div>
+  <div class="popup popup__delete">
+    <div class="popup__container">
+      <button type="button" class="popup__button-close"></button>
+      <h3 class="popup__title">Вы уверены?</h3>
+      <form action="save" method="post" name="delete" novalidate class="popup__form" >
+          <input type="submit" value="Да" class="popup__button">
+      </form>
+    </div>
+  </div>
   <div class="popup popup__view-image">
     <div class="popup__image-container">
       <button class="popup__button-close"></button>
       <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз" class="popup__image">
       <p class="popup__label">Архыз</p>
+    </div>
+  </div>
+  <div class="popup popup__avatar">
+    <div class="popup__container">
+      <button type="button" class="popup__button-close"></button>
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form action="save" method="get" name="new-avatar" novalidate class="popup__form" >
+          <input type="url" name="new-avatar" id="new-avatar" placeholder="Ссылка на новый аватар" required class="popup__text-input">
+          <span class="popup__span popup__span-new-avatar"></span>
+          <input type="submit" value="Сохранить" class="popup__button popup__button_disabled" disabled>
+      </form>
     </div>
   </div>
   <template id="card__temp">

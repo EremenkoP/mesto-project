@@ -1,7 +1,7 @@
 import '../pages/index.css'
 
 // импортирую нужные объекты
-import {formProfile, changesProfile, handleProfileFormSubmit, openProfilePopup, getUserData} from './components/modal.js';
+import {formProfile, changesProfile, handleProfileFormSubmit, openProfilePopup, getUserData, popupAvatar, changesAvatar, formAvatar, handelNewAvatar} from './components/modal.js';
 import {openPopup ,closePopup} from './components/utils.js';
 import {enableValidation} from './components/validate.js'
 import {popupAdd, formCard, cardAdd, handelFormAddCard, createCard, cardsArea} from './components/cards.js'
@@ -9,6 +9,7 @@ import {getAppInfo } from './components/api.js';
 
 // объявим необходимые константы
 const popups = document.querySelectorAll(".popup");
+export let myUser;
 
 //закрытие сразу всех попапов
 popups.forEach(popup => {
@@ -27,8 +28,9 @@ getAppInfo()
   .then(([user, cards]) => {
     getUserData(user);
     cards.forEach(card => {
-      cardsArea.prepend(createCard(card.name, card.link, card.likes, user._id, card.owner._id));
-    });
+      cardsArea.append(createCard(card.name, card.link, card.likes, user, card.owner._id, card._id));
+    })
+    myUser = user;
   })
   .catch(err => console.log(err));
 
@@ -42,6 +44,8 @@ cardAdd.addEventListener('click', function(){
 
 // закрытие модалки c изменениями данных пользователя
 formProfile.addEventListener('submit', handleProfileFormSubmit);
+changesAvatar.addEventListener('mousedown', () => openPopup(popupAvatar));
+formAvatar.addEventListener('submit', handelNewAvatar)
 
 // открытие и закрытие модалки с данными пользователя
 changesProfile.addEventListener('click', openProfilePopup);

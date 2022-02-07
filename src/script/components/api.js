@@ -1,6 +1,6 @@
 //* задание базовых функций
 const config = {
-  baseUrl: 'https://nomoreparties.co/plus-cohort-6/',
+  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-6/',
   headers: {
     Authorization: '5923b0c0-8adb-4b17-b276-927b1555a3bd',
     'Content-Type': 'application/json'
@@ -15,8 +15,9 @@ const getUser = () => {
   return fetch(`${config.baseUrl}/users/me`, {
       headers: config.headers
     })
-    .then(res => getResponseData(res));
+    .then(res => getResponseData(res))
 };
+
 //получение исходных данных картинок
 const getCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
@@ -39,6 +40,7 @@ const changesDataProfile = (newName, newProfession) => {
     })
   })
 }
+
 // отправка данных новой карточки
 const postNewCard = (cardName, cardLink) => {
   return fetch(`${config.baseUrl}/cards`, {
@@ -51,5 +53,41 @@ const postNewCard = (cardName, cardLink) => {
   })
 }
 
+//Удаление карточки
+const deleteCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  })
+}
+
+//постановка лайка
+const activeCardLike = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+    method: 'PUT',
+    headers: config.headers
+  })
+}
+
+//удаление лайка
+const deleteCardLike = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  })
+}
+
+// отправка данных на сервер для изменения аватара пользователя
+const changesAvatarProfile = (newAvatar) => {
+  return fetch(`${config.baseUrl}/users/me/avatar `, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: newAvatar,
+    })
+  })
+}
+
+
 //импорт
-  export {getAppInfo, changesDataProfile, postNewCard}
+  export {getAppInfo, changesDataProfile, postNewCard, getResponseData, deleteCard, activeCardLike, deleteCardLike, changesAvatarProfile}
