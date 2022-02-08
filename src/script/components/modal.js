@@ -16,6 +16,7 @@ const formProfile = popupProfile.querySelector('.popup__form');
 const formName = formProfile.querySelector('#name');
 const formProfesion = formProfile.querySelector('#proffesion');
 const formAvatar = popupAvatar.querySelector('.popup__form');
+const avatar = popupAvatar.querySelector('.popup__text-input');
 
 // базовый набор карточек и элементов
 const profileName = document.querySelector('.profile__name');
@@ -39,18 +40,17 @@ function handleProfileFormSubmit (evt) {
   evt.preventDefault();
   const button = evt.submitter;
   button.value = 'Сохранение...'
-  changesDataProfile (formName, formProfesion)
+  changesDataProfile (formName.value, formProfesion.value)
     .then ((res) => {
-      if (res.ok) {
-        profileName.textContent = formName.value;
-        profileProfesion.textContent = formProfesion.value;
-        closePopup(popupProfile);
-        button.setAttribute('disabled', '');
-        button.classList.add('popup__button_disabled');
-        button.value = 'Сохранить'
-      } else {
-        return console.log(res.status);
-      }
+      profileName.textContent = res.name;
+      profileProfesion.textContent = res.about;
+      closePopup(popupProfile);
+    })
+    .catch ( res => console.log(res))
+    .finally ( () => {
+      button.setAttribute('disabled', '');
+      button.classList.add('popup__button_disabled');
+      button.value = 'Сохранить'
     })
 }
 
@@ -59,19 +59,17 @@ function handelNewAvatar (evt) {
   evt.preventDefault();
   const button = evt.submitter;
   button.value = 'Сохранение...'
-  const avatar = popupAvatar.querySelector('.popup__text-input').value;
-  changesAvatarProfile (avatar)
+  changesAvatarProfile (avatar.value)
     .then ((res) => {
-      if (res.ok) {
-        profileImage.src = avatar;
+        profileImage.src = res.avatar;
         closePopup(popupAvatar);
-        formAvatar.reset();
-        button.setAttribute('disabled', '');
-        button.classList.add('popup__button_disabled');
-        button.value = 'Сохранить'
-      } else {
-        return console.log(res.status);
-      }
+    })
+    .catch ( res => console.log(res))
+    .finally ( () => {
+      formAvatar.reset();
+      button.setAttribute('disabled', '');
+      button.classList.add('popup__button_disabled');
+      button.value = 'Сохранить'
     })
 }
 

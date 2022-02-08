@@ -35,10 +35,11 @@ const changesDataProfile = (newName, newProfession) => {
     method: 'PATCH',
     headers: config.headers,
     body: JSON.stringify({
-      name: newName.value,
-      about: newProfession.value
+      name: newName,
+      about: newProfession
     })
   })
+  .then(res => getResponseData(res))
 }
 
 // отправка данных новой карточки
@@ -51,6 +52,7 @@ const postNewCard = (cardName, cardLink) => {
       link: cardLink
     })
   })
+  .then ((res) => getResponseData(res))
 }
 
 //Удаление карточки
@@ -59,6 +61,7 @@ const deleteCard = (cardId) => {
     method: 'DELETE',
     headers: config.headers
   })
+  .then ((res) => getResponseData(res))
 }
 
 //постановка лайка
@@ -67,6 +70,7 @@ const activeCardLike = (cardId) => {
     method: 'PUT',
     headers: config.headers
   })
+  .then ((res) => getResponseData(res))
 }
 
 //удаление лайка
@@ -75,6 +79,7 @@ const deleteCardLike = (cardId) => {
     method: 'DELETE',
     headers: config.headers
   })
+  .then ((res) => getResponseData(res))
 }
 
 // отправка данных на сервер для изменения аватара пользователя
@@ -86,8 +91,9 @@ const changesAvatarProfile = (newAvatar) => {
       avatar: newAvatar,
     })
   })
+  .then(res => getResponseData(res))
 }
 
 
 //импорт
-  export {getAppInfo, changesDataProfile, postNewCard, getResponseData, deleteCard, activeCardLike, deleteCardLike, changesAvatarProfile}
+  export {getAppInfo, changesDataProfile, postNewCard, deleteCard, activeCardLike, deleteCardLike, changesAvatarProfile}
