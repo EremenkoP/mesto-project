@@ -60,18 +60,23 @@ function handelFormAddCard (evt) {
   .catch ( res => console.log(res))
 }
 
-
+let idForDelete;
+let cardForDelete;
 //функция добавления кнопки удаления
 const activeteButtonTrash = (card ,userId, authorId, cardId) => {
   if ((userId === authorId) || (authorId === myUser)) {
     const buttonForActive = card.querySelector('.card__button-trash');
     buttonForActive.classList.add('card__button-trash_active');
-    buttonForActive.addEventListener('mousedown', () => openPopup(popupCardDelete));
+    buttonForActive.addEventListener('mousedown', () => {
+      openPopup(popupCardDelete);
+      idForDelete = cardId;
+      cardForDelete = card;
+    });
     formDeleteCard.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      deleteCard(cardId)
+      deleteCard(idForDelete)
       .then (() => {
-          card.remove();
+          cardForDelete.remove();
           closePopup(popupCardDelete);
         }
       )
