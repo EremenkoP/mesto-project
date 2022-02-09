@@ -53,11 +53,11 @@ function handelFormAddCard (evt) {
   })
   .then ( () => {
     formCard.reset();
-    button.value = 'Создать'
     button.setAttribute('disabled', '');
     button.classList.add('popup__button_disabled');
   })
   .catch ( res => console.log(res))
+  .finally ( () => button.value = 'Создать')
 }
 
 let idForDelete;
@@ -72,19 +72,18 @@ const activeteButtonTrash = (card ,userId, authorId, cardId) => {
       idForDelete = cardId;
       cardForDelete = card;
     });
-    formDeleteCard.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      deleteCard(idForDelete)
-      .then (() => {
-          cardForDelete.remove();
-          closePopup(popupCardDelete);
-        }
-      )
-      .catch ( res => console.log(res))
-    })
   }
 }
-
+formDeleteCard.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  deleteCard(idForDelete)
+  .then (() => {
+      cardForDelete.remove();
+      closePopup(popupCardDelete);
+    }
+  )
+  .catch ( res => console.log(res))
+})
 
 //функция переключения состояния лайка и счетчика
 const toggleLike = (likes, likeButton, user, counterLike) => {

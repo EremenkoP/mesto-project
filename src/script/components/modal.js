@@ -48,8 +48,6 @@ function handleProfileFormSubmit (evt) {
     })
     .catch ( res => console.log(res))
     .finally ( () => {
-      button.setAttribute('disabled', '');
-      button.classList.add('popup__button_disabled');
       button.value = 'Сохранить'
     })
 }
@@ -64,13 +62,14 @@ function handelNewAvatar (evt) {
         profileImage.src = res.avatar;
         closePopup(popupAvatar);
     })
-    .catch ( res => console.log(res))
-    .finally ( () => {
+    .then ( () => {
       formAvatar.reset();
       button.setAttribute('disabled', '');
       button.classList.add('popup__button_disabled');
-      button.value = 'Сохранить'
     })
+    .catch ( res => console.log(res))
+    .finally ( () => button.value = 'Сохранить')
+
 }
 
 // функция для загрузки первичных данных пользователя
